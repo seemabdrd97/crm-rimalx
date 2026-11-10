@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CRM رمال X</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f0f8;--card:#fff;--tx:#2e203c;--mut:#6f6380;--bd:#d0c4dc;--ac:#734f96;--ac2:#e8e2ed;--ok:#1a7f4b;--bad:#c65630;--warn:#be8144;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17101e;--card:#2e203c;--tx:#f4f0f8;--mut:#a28ab9;--bd:#452f5a;--ac:#8a6ca8;--ac2:#452f5a;--ok:#4cc38a;--bad:#f8855d;--warn:#eda155;color-scheme:dark}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.6 "Jost","IBM Plex Sans Arabic","GE SS Two",Tahoma,sans-serif;font-weight:400}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='48'><path d='M14 2h14l7 12-7 12H14L7 14z' fill='none' stroke='%23ffffff' stroke-opacity='.08'/></svg>"),linear-gradient(135deg,#17101e,#2e203c 60%,#452f5a);color:#fff;border-bottom:3px solid #eda155;z-index:5;padding:10px 14px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#17101e;z-index:10}
+.top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+h1{font-size:19px;margin:0;font-weight:600;color:#fff}h1 i{color:#eda155;font-style:normal;font-family:Jost,sans-serif;font-weight:500}header .hint{color:#d0c4dc}
+#gs{flex:1;min-width:180px;max-width:420px}
+nav{display:flex;gap:6px;margin-top:8px;overflow-x:auto}
+nav button{border:1px solid #734f96;background:transparent;color:#e8e2ed;padding:6px 14px;border-radius:20px;cursor:pointer;white-space:nowrap;font:inherit}
+nav button.on{background:#eda155;color:#2e203c;border-color:#eda155;font-weight:600}
+main{padding:14px;max-width:1200px;margin:auto}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:7px 10px;width:100%}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:7px 14px;cursor:pointer;font:inherit;white-space:nowrap}
+.btn.g{background:transparent;color:var(--tx);border:1px solid var(--bd)}
+.btn.d{background:var(--bad)}
+.bar{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center}
+.bar input,.bar select{width:auto;flex:1;min-width:140px}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--bd);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--bd);white-space:nowrap}
+th{color:var(--mut);font-weight:600;font-size:13px;background:var(--ac2)}
+tr.r{cursor:pointer}tr.r:hover{background:var(--ac2)}
+.tag{padding:2px 9px;border-radius:12px;background:var(--ac2);font-size:12px}
+.bad{color:var(--bad)}.ok{color:var(--ok)}.warn{color:var(--warn)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:14px}
+.k{background:var(--card);border:1px solid var(--bd);border-top:3px solid #eda155;border-radius:10px;padding:12px;cursor:pointer}
+.k b{display:block;font-size:26px;color:var(--ac);font-family:Jost,sans-serif;font-weight:500}.k span{color:var(--mut);font-size:13px}
+.sec{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:12px}
+.sec h3{margin:0 0 8px;font-size:15px}
+.bk{display:flex;gap:6px;overflow-x:auto}
+.col{flex:1;min-width:130px;background:var(--bg);border-radius:8px;padding:8px}
+.col div.i{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:5px 8px;margin-top:5px;font-size:13px;cursor:pointer}
+dialog{border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);width:min(560px,94vw);padding:16px;max-height:90vh;overflow:auto}
+dialog::backdrop{background:#0008}
+.f{margin-bottom:9px}.f label{display:block;font-size:13px;color:var(--mut)}
+.err{color:var(--bad);font-size:13px;margin:6px 0}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:12px}.cg .sec{margin:0}
+.hint{color:var(--mut);font-size:12px}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><h1>CRM رمال <i>X</i></h1><input id="gs" placeholder="بحث سريع: اسم، جوال، بريد، استفسار..."><span id="st" class="hint"></span></div>
+ <nav id="nav"></nav>
+</header>
+<main id="m"></main>
+<dialog id="dlg"></dialog>
+<script>
+const STAGES=["استفسار","تأهيل","عرض","متابعة","حجز","دفع","تجربة","تجديد"];
+const CH=["الجوال","واتساب","زيارة","موقع","إنستغرام","إحالة"];
+const SV=["مساحة عمل مشتركة","قاعة الابتكار","كبسولة","استشارة","احتضان","أخرى"];
+const SCH={
+clients:{t:"العملاء",f:[["name","الاسم","text",1],["phone","الجوال (05XXXXXXXX)","phone"],["email","البريد","text"],["source","المصدر","sel",0,CH],["status","حالة العميل","sel",1,["جديد","نشط","سابق"]],["service","الخدمة المهتم بها","sel",1,SV],["notes","ملاحظات","area"]]},
+leads:{t:"الاستفسارات والفرص",f:[["title","الاستفسار","text",1],["client","العميل","ref",1,"clients"],["channel","القناة","sel",1,CH],["service","الخدمة","sel",1,SV],["arrived","وقت الوصول","dt",1],["reply","وقت أول رد","dt",1],["stage","المرحلة","sel",1,STAGES],["result","النتيجة","sel",1,["مفتوح","حجز","مغلق"]],["owner","مسؤول المتابعة","text",1],["next","المتابعة القادمة","date"],["loss","سبب الخسارة","sel",0,["السعر","لا رد","اختار منافس","الموقع","التوقيت","غير ذلك"]]]},
+bookings:{t:"الحجوزات والمدفوعات",f:[["title","المعرّف","text",1],["client","العميل","ref",1,"clients"],["space","المساحة/النوع","sel",1,SV],["start","البداية","dt",1],["end","النهاية","dt",1],["due","المبلغ المستحق","num",1],["paid","المحصّل","num",1],["pay","حالة الدفع","sel",1,["غير مدفوع","جزئي","مدفوع"]],["due_date","تاريخ الاستحقاق","date"],["audit","حالة التدقيق","sel",0,["بانتظار","تم التدقيق"]]]},
+faq:{t:"أسئلة الموظفين والإجابات",f:[["title","السؤال","text",1],["ctx","التفاصيل والسياق","area"],["cat","التصنيف","sel",1,["أسعار","مساحات","سياسات","دفع","أخرى"]],["status","الحالة","sel",1,["غير معروف","قيد المراجعة","تمت الإجابة"]],["ans","الإجابة المعتمدة","area"],["by","معتمد من","text"],["adate","تاريخ الاعتماد","date"]]}
+};
+let D={clients:[],leads:[],bookings:[],faq:[]},tab="dash",q="",db=null,ref=null,saving=false,pend=false,own=false;
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,9),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const normP=p=>{let d=String(p||"").replace(/\D/g,"");if(d.startsWith("00966"))d="0"+d.slice(5);else if(d.startsWith("966"))d="0"+d.slice(3);else if(d.length==9&&d[0]=="5")d="0"+d;return d};
+const cname=id=>(D.clients.find(c=>c.id==id)||{}).name||"—";
+const mins=l=>l.arrived&&l.reply?Math.round((new Date(l.reply)-new Date(l.arrived))/6e4):null;
+const rem=b=>(+b.due||0)-(+b.paid||0);
+const hrs=b=>b.start&&b.end?Math.max(0,(new Date(b.end)-new Date(b.start))/36e5).toFixed(1):"";
+const miss=(k,r)=>SCH[k].f.filter(f=>f[3]&&!r[f[0]]&&!(k=="leads"&&f[0]=="reply"&&0)).map(f=>f[1]);
+const complete=(k,r)=>{const m=miss(k,r);return m.length?`<span class="bad">ناقص (${m.length})</span>`:`<span class="ok">مكتمل</span>`};
+const today=()=>new Date().toISOString().slice(0,10);
+const late=l=>l.result=="مفتوح"&&(!l.owner||!l.next||l.next<today());
+function setSt(t){$("#st").textContent=t}
+function persist(){if(saving){pend=true;return}saving=true;const go=async()=>{try{if(ref)await ref.set({D});else localStorage.setItem("crmx",JSON.stringify(D));setSt("تم الحفظ")}catch(e){setSt("تعذّر الحفظ")}saving=false;if(pend){pend=false;persist()}};go()}
+function cell(k,f,r){const v=r[f[0]];if(f[2]=="ref")return esc(cname(v));if(f[2]=="num")return v?Number(v).toLocaleString("ar-SA"):"";if(f[2]=="dt"&&v)return esc(v.replace("T"," "));if(f[2]=="sel"&&v)return `<span class="tag">${esc(v)}</span>`;return esc(v)}
+function extra(k,r){if(k=="clients")return`<td>${D.leads.filter(l=>l.client==r.id).length} / ${D.bookings.filter(b=>b.client==r.id).length}</td>`;if(k=="leads"){const m=mins(r);return`<td>${m==null?"—":m+" د"}</td><td>${complete(k,r)}</td>`}if(k=="bookings")return`<td>${hrs(r)}</td><td class="${rem(r)>0?"warn":"ok"}">${rem(r).toLocaleString("ar-SA")}</td><td>${complete(k,r)}</td>`;return""}
+const EH={clients:"<th>استفسارات / حجوزات</th>",leads:"<th>زمن أول رد</th><th>اكتمال</th>",bookings:"<th>الساعات</th><th>المتبقي</th><th>اكتمال</th>",faq:""};
+function match(k,r){const s=q.trim().toLowerCase();if(!s)return true;const n=normP(s);const hay=Object.values(r).join(" ").toLowerCase()+" "+(r.client?cname(r.client).toLowerCase():"");return hay.includes(s)||(n.length>=5&&normP(r.phone||"").includes(n))}
+function table(k,rows,filt){const S=SCH[k];const cols=S.f.slice(0,k=="clients"?6:8);return`<div class="tw"><table><tr>${cols.map(f=>`<th>${f[1].replace(/ \(.*\)/,"")}</th>`).join("")}${EH[k]}</tr>${rows.map(r=>`<tr class="r" data-k="${k}" data-id="${r.id}">${cols.map(f=>`<td>${cell(k,f,r)}</td>`).join("")}${extra(k,r)}</tr>`).join("")||`<tr><td colspan="9" class="hint">لا توجد سجلات</td></tr>`}</table></div>`}
+let fv="";
+function view(){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t==tab));const m=$("#m");
+if(tab=="dash")return dash(m);
+const k=tab,S=SCH[k];let rows=D[k].filter(r=>match(k,r));
+const views={leads:[["","الكل"],["open","المفتوحة"],["noowner","بلا مسؤول"],["late","متأخرة/بلا متابعة"],["incomplete","ناقصة"]],bookings:[["","الكل"],["unpaid","غير مكتمل الدفع"],["audit","تحتاج تدقيق"],["incomplete","ناقصة"]],clients:[["","الكل"],["dup","مكرر محتمل"]],faq:[["","الكل"],["wait","بانتظار إجابة"],["done","المعتمدة"]]}[k];
+if(fv=="open")rows=rows.filter(r=>r.result=="مفتوح");if(fv=="noowner")rows=rows.filter(r=>!r.owner);if(fv=="late")rows=rows.filter(late);if(fv=="incomplete")rows=rows.filter(r=>miss(k,r).length);
+if(fv=="unpaid")rows=rows.filter(r=>rem(r)>0);if(fv=="audit")rows=rows.filter(r=>r.audit!="تم التدقيق");
+if(fv=="dup"){const c={};D.clients.forEach(x=>{const p=normP(x.phone);if(p)c[p]=(c[p]||0)+1});rows=rows.filter(r=>c[normP(r.phone)]>1)}
+if(fv=="wait")rows=rows.filter(r=>r.status!="تمت الإجابة");if(fv=="done")rows=rows.filter(r=>r.status=="تمت الإجابة");
+m.innerHTML=`<div class="bar"><b>${S.t}</b><select id="fv">${views.map(v=>`<option value="${v[0]}" ${v[0]==fv?"selected":""}>${v[1]}</option>`).join("")}</select><button class="btn" id="add">+ جديد</button><span class="hint">${rows.length} سجل</span></div>${table(k,rows)}`;
+$("#fv").onchange=e=>{fv=e.target.value;view()};$("#add").onclick=()=>edit(k);
+m.querySelectorAll("tr.r").forEach(tr=>tr.onclick=()=>edit(tr.dataset.k,tr.dataset.id))}
+function cnt(a,f){const o={};a.forEach(x=>{const k=f(x)||"غير محدد";o[k]=(o[k]||0)+1});return o}
+function bars(o,c,ord){const e=Object.entries(o);if(!ord)e.sort((a,b)=>b[1]-a[1]);const mx=Math.max(1,...e.map(x=>x[1]));return e.length?e.map(([a,b])=>`<div style="display:flex;align-items:center;gap:8px;margin:5px 0"><span style="width:100px;font-size:13px;overflow:hidden;text-overflow:ellipsis">${esc(a)}</span><div style="flex:1;background:var(--bg);border-radius:5px"><div style="width:${b/mx*100}%;background:${c||"var(--ac)"};height:14px;border-radius:5px"></div></div><b style="min-width:48px;text-align:left">${b.toLocaleString("ar-SA")}</b></div>`).join(""):'<span class="hint">لا توجد بيانات</span>'}
+function dash(m){const L=D.leads,B=D.bookings;const open=L.filter(l=>l.result=="مفتوح"),ms=L.map(mins).filter(x=>x!=null);const avg=ms.length?Math.round(ms.reduce((a,b)=>a+b,0)/ms.length):"—";
+const due=B.reduce((a,b)=>a+(+b.due||0),0),paid=B.reduce((a,b)=>a+(+b.paid||0),0);const inc=L.filter(r=>miss("leads",r).length).length+B.filter(r=>miss("bookings",r).length).length;
+const K=[["العملاء",D.clients.length,"clients",""],["استفسارات مفتوحة",open.length,"leads","open"],["بلا مسؤول",L.filter(l=>!l.owner).length,"leads","noowner"],["متابعات متأخرة",L.filter(late).length,"leads","late"],["متوسط أول رد (د)",avg,"",""],["الحجوزات",B.length,"bookings",""],["المحصّل / المستحق",paid.toLocaleString("ar-SA")+" / "+due.toLocaleString("ar-SA"),"bookings","unpaid"],["معدل التحويل",L.length?Math.round(L.filter(l=>l.result=="حجز").length/L.length*100)+"%":"—","leads",""],["سجلات ناقصة",inc,"leads","incomplete"]];
+const mo={};L.filter(l=>l.arrived).map(l=>l.arrived.slice(0,7)).sort().forEach(x=>mo[x]=(mo[x]||0)+1);const rev={};B.forEach(b=>{const s=b.space||"غير محدد";rev[s]=(rev[s]||0)+(+b.paid||0)});
+const lost={};L.filter(l=>l.result=="مغلق").forEach(l=>lost[l.loss||"غير محدد"]=(lost[l.loss||"غير محدد"]||0)+1);
+m.innerHTML=`<div class="grid">${K.map(x=>`<div class="k" data-t="${x[2]}" data-v="${x[3]}"><b>${x[1]}</b><span>${x[0]}</span></div>`).join("")}</div>
+<div class="sec"><h3>مسار الفرص</h3><div class="bk">${STAGES.map(s=>`<div class="col"><b>${s} (${L.filter(l=>l.stage==s&&l.result=="مفتوح").length})</b>${L.filter(l=>l.stage==s&&l.result=="مفتوح").map(l=>`<div class="i" data-id="${l.id}">${esc(l.title)}<br><span class="hint">${esc(cname(l.client))}</span></div>`).join("")}</div>`).join("")}</div></div>
+<div class="cg"><div class="sec"><h3>الاستفسارات حسب القناة</h3>${bars(cnt(L,l=>l.channel))}</div><div class="sec"><h3>الاستفسارات حسب الخدمة</h3>${bars(cnt(L,l=>l.service),"#eda155")}</div><div class="sec"><h3>الاستفسارات حسب الشهر</h3>${bars(mo,"var(--warn)",1)}</div><div class="sec"><h3>حالة الدفع</h3>${bars(cnt(B,b=>b.pay),"var(--ok)")}</div><div class="sec"><h3>المحصّل حسب الخدمة</h3>${bars(rev,"var(--ac)")}</div><div class="sec"><h3>أسباب الخسارة</h3>${bars(lost,"var(--bad)")}</div></div>
+<div class="sec"><h3>المتابعات اليوم</h3>${table("leads",L.filter(l=>l.result=="مفتوح"&&l.next&&l.next<=today()))}</div>
+<p class="hint">المؤشرات محسوبة من البيانات المسجلة فقط؛ راجع السجلات الناقصة قبل الاعتماد على معدل التحويل أو زمن الاستجابة.</p>`;
+m.querySelectorAll(".k").forEach(c=>c.onclick=()=>{if(c.dataset.t){tab=c.dataset.t;fv=c.dataset.v;view()}});
+m.querySelectorAll(".i").forEach(c=>c.onclick=()=>edit("leads",c.dataset.id));m.querySelectorAll("tr.r").forEach(tr=>tr.onclick=()=>edit(tr.dataset.k,tr.dataset.id))}
+function edit(k,id){const S=SCH[k];const r=id?{...D[k].find(x=>x.id==id)}:{id:uid()};if(!id){if(k=="leads"){r.arrived=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16);r.result="مفتوح";r.stage="استفسار"}if(k=="clients"){r.status="جديد"}if(k=="faq")r.status="غير معروف"}
+const d=$("#dlg");const inp=f=>{const[key,l,t,req,o]=f,v=r[key]??"";const a=`data-k="${key}"`;
+if(t=="sel")return`<select ${a}><option value=""></option>${o.map(x=>`<option ${x==v?"selected":""}>${x}</option>`).join("")}</select>`;
+if(t=="ref")return`<select ${a}><option value=""></option>${D.clients.map(c=>`<option value="${c.id}" ${c.id==v?"selected":""}>${esc(c.name)} ${esc(c.phone||"")}</option>`).join("")}</select>`;
+if(t=="area")return`<textarea rows="3" ${a}>${esc(v)}</textarea>`;
+return`<input ${a} type="${t=="dt"?"datetime-local":t=="date"?"date":t=="num"?"number":"text"}" ${t=="phone"?'inputmode="tel"':""} value="${esc(v)}">`};
+let extraH="";if(k=="clients"&&id){const Ls=D.leads.filter(l=>l.client==id),Bs=D.bookings.filter(b=>b.client==id);extraH=`<div class="sec"><h3>صفحة العميل</h3>استفسارات: ${Ls.length} · حجوزات: ${Bs.length} · إجمالي المحصّل: ${Bs.reduce((a,b)=>a+(+b.paid||0),0).toLocaleString("ar-SA")}<br><span class="hint">آخر حجز: ${Bs.map(b=>b.start).sort().pop()?.replace("T"," ")||"—"} · آخر استفسار: ${Ls.map(l=>l.arrived).sort().pop()?.replace("T"," ")||"—"}</span></div>`}
+d.innerHTML=`<h3 style="margin-top:0">${S.t} — ${id?"تعديل":"جديد"}</h3>${extraH}${S.f.map(f=>`<div class="f"><label>${f[1]}${f[3]?" *":""}</label>${inp(f)}</div>`).join("")}<div id="er" class="err"></div><div class="bar"><button class="btn" id="sv">حفظ</button><button class="btn g" id="cl">إلغاء</button>${id?'<button class="btn d" id="dl">حذف</button>':""}</div>`;
+d.showModal();$("#cl").onclick=()=>d.close();
+if(id)$("#dl").onclick=()=>{if(confirm("حذف السجل نهائياً؟")){D[k]=D[k].filter(x=>x.id!=id);persist();d.close();view()}};
+$("#sv").onclick=()=>{const n={...r};d.querySelectorAll("[data-k]").forEach(e=>n[e.dataset.k]=e.value.trim());let e=[];
+if(k=="clients"){n.phone=normP(n.phone);if(!n.phone&&!n.email)e.push("أدخل الجوال أو البريد");if(n.phone&&!/^05\d{8}$/.test(n.phone))e.push("صيغة الجوال يجب أن تكون 05XXXXXXXX");
+const du=D.clients.find(c=>c.id!=n.id&&((n.phone&&c.phone==n.phone)||(n.email&&c.email&&c.email.toLowerCase()==n.email.toLowerCase())));if(du)e.push("العميل موجود مسبقاً: "+du.name+" — اربط الاستفسار به بدل إنشاء عميل جديد")}
+if(k=="leads"&&n.result=="مغلق"&&!n.loss)e.push("سبب الخسارة إلزامي عند الإغلاق بدون حجز");
+if(k=="leads"&&n.result=="مفتوح"&&!n.next)e.push("حدّد موعد المتابعة القادمة");
+if(k=="faq"&&n.status=="تمت الإجابة"&&!n.ans)e.push("اكتب الإجابة المعتمدة");
+if(e.length){$("#er").innerHTML=e.join("<br>");return}
+const i=D[k].findIndex(x=>x.id==n.id);if(i<0)D[k].push(n);else D[k][i]=n;persist();d.close();view()}}
+function boot(){$("#nav").innerHTML=[["dash","اللوحة"],...Object.keys(SCH).map(k=>[k,SCH[k].t])].map(x=>`<button data-t="${x[0]}">${x[1]}</button>`).join("");
+$("#nav").onclick=e=>{if(e.target.dataset.t){tab=e.target.dataset.t;fv="";view()}};
+$("#gs").oninput=e=>{q=e.target.value;if(q&&tab=="dash")tab="clients";view()};view()}
+function load(x){if(x&&x.D)D={clients:[],leads:[],bookings:[],faq:[],...x.D}}
+boot();
+(async()=>{let t=setTimeout(()=>{},10000);try{db=await claude.use("db")}catch(e){}clearTimeout(t);
+if(db){ref=db.doc("crm/main");let first=1;ref.onSnapshot(s=>{if(s.exists)load(s.data());if(!saving)view();if(first){first=0;setSt("متصل")}},()=>{ref=null;setSt("وضع محلي")})}
+else{try{load({D:JSON.parse(localStorage.getItem("crmx")||"null")});view();setSt("وضع محلي")}catch(e){}}})();
+</script>
+</body>
+</html>
